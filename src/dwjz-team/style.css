@@ -1,0 +1,200 @@
+
+  /* ========== 宇宙星雲 · 浅色主题 ========== */
+  #nebula-hud {
+    --neb-bg-1: #f3eefc;
+    --neb-bg-2: #eaf3fd;
+    --neb-bg-3: #fdeef7;
+    --neb-violet: #a78bfa;
+    --neb-pink:   #f0abfc;
+    --neb-cyan:   #67e8f9;
+    --neb-glass:  rgba(255,255,255,0.55);
+    --neb-glass-strong: rgba(255,255,255,0.72);
+    --neb-border: rgba(255,255,255,0.7);
+    --neb-text:   #463f63;
+    --neb-text-soft: #6b6488;
+    --neb-shadow: 0 8px 32px rgba(140,120,200,0.18);
+
+    position: relative;
+    margin: 14px auto;
+    width: 100%;
+    max-width: 860px;
+    box-sizing: border-box;
+    font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+    color: var(--neb-text);
+    background:
+      radial-gradient(circle at 18% 20%, rgba(167,139,250,0.28), transparent 42%),
+      radial-gradient(circle at 82% 18%, rgba(103,232,249,0.26), transparent 45%),
+      radial-gradient(circle at 70% 88%, rgba(240,171,252,0.26), transparent 48%),
+      linear-gradient(135deg, var(--neb-bg-1), var(--neb-bg-2) 50%, var(--neb-bg-3));
+    border: 1px solid var(--neb-border);
+    border-radius: 22px;
+    box-shadow: var(--neb-shadow);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    overflow: hidden;
+    line-height: 1.7;
+  }
+
+  #nebula-hud * { box-sizing: border-box; }
+
+  /* 顶栏 */
+  .neb-topbar {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 22px;
+    background: linear-gradient(90deg, rgba(167,139,250,0.18), rgba(103,232,249,0.14));
+    border-bottom: 1px solid var(--neb-border);
+  }
+  .neb-title {
+    display: flex; align-items: center; gap: 10px;
+    font-size: 15px; font-weight: 700; letter-spacing: 1px;
+    background: linear-gradient(90deg, var(--neb-violet), var(--neb-pink), var(--neb-cyan));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .neb-title .dot {
+    width: 9px; height: 9px; border-radius: 50%;
+    background: radial-gradient(circle, #fff, var(--neb-cyan));
+    box-shadow: 0 0 8px var(--neb-cyan);
+    -webkit-text-fill-color: initial;
+  }
+  .neb-collapse-btn {
+    cursor: pointer; border: none;
+    width: 32px; height: 32px; border-radius: 10px;
+    background: var(--neb-glass);
+    color: var(--neb-text); font-size: 14px;
+    display: flex; align-items: center; justify-content: center;
+    transition: transform .25s ease, background .2s;
+  }
+  .neb-collapse-btn:hover { background: var(--neb-glass-strong); }
+  #nebula-hud.collapsed .neb-collapse-btn { transform: rotate(180deg); }
+  #nebula-hud.collapsed .neb-body { display: none; }
+
+  /* 主体 */
+  .neb-body { padding: 18px 20px 22px; }
+
+  /* 统计栏 */
+  .neb-summary {
+    display: flex; flex-wrap: wrap; gap: 10px 20px;
+    padding: 12px 16px; border-radius: 16px; margin-bottom: 16px;
+    background: linear-gradient(90deg, rgba(103,232,249,0.14), rgba(240,171,252,0.12));
+    border: 1px solid var(--neb-border);
+    font-size: 13px; color: var(--neb-text-soft);
+  }
+  .neb-summary span { display: flex; align-items: center; gap: 6px; }
+  .neb-led { width: 8px; height: 8px; border-radius: 50%; background: #a78bfa; box-shadow: 0 0 7px #a78bfa; }
+
+  /* 筛选标签 */
+  .neb-filters {
+    display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px;
+  }
+  .neb-filter-btn {
+    cursor: pointer; border: 1px solid var(--neb-border);
+    padding: 5px 14px; border-radius: 20px;
+    font-size: 12px; font-weight: 600; color: var(--neb-text-soft);
+    background: var(--neb-glass); transition: all .2s;
+  }
+  .neb-filter-btn:hover { color: var(--neb-text); background: var(--neb-glass-strong); }
+  .neb-filter-btn.active {
+    color: #fff;
+    background: linear-gradient(120deg, var(--neb-violet), var(--neb-pink));
+    border-color: transparent;
+    box-shadow: 0 3px 10px rgba(167,139,250,0.35);
+  }
+
+  /* 卡片网格 */
+  .neb-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+  }
+
+  /* 单张卡片 */
+  .neb-card {
+    background: var(--neb-glass);
+    border: 1px solid var(--neb-border);
+    border-radius: 18px; padding: 16px;
+    transition: transform .22s ease, box-shadow .22s ease;
+    position: relative; overflow: hidden;
+  }
+  .neb-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--neb-violet), var(--neb-cyan));
+    opacity: 0; transition: opacity .22s;
+  }
+  .neb-card:hover { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(140,120,200,0.22); }
+  .neb-card:hover::before { opacity: 1; }
+
+  /* 卡片头部 */
+  .neb-card-head {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 12px; padding-bottom: 10px;
+    border-bottom: 1px solid rgba(167,139,250,0.18);
+  }
+  .neb-card-name {
+    font-size: 15px; font-weight: 700;
+    background: linear-gradient(90deg, var(--neb-violet), var(--neb-pink));
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .neb-card-gender {
+    font-size: 12px; padding: 2px 10px; border-radius: 10px;
+    background: rgba(167,139,250,0.15); color: var(--neb-text-soft);
+    border: 1px solid rgba(167,139,250,0.25);
+  }
+
+  /* 字段行 */
+  .neb-row {
+    display: flex; align-items: baseline; gap: 6px;
+    font-size: 12.5px; margin-bottom: 7px;
+  }
+  .neb-row:last-child { margin-bottom: 0; }
+  .neb-row .k {
+    color: var(--neb-text-soft); flex-shrink: 0; min-width: 56px;
+    font-size: 11px;
+  }
+  .neb-row .v { font-weight: 600; color: var(--neb-text); }
+
+  /* 阶位徽章 */
+  .neb-badge {
+    display: inline-block; padding: 2px 9px; border-radius: 8px;
+    font-size: 11px; font-weight: 700; color: #fff;
+    background: linear-gradient(120deg, var(--neb-violet), var(--neb-pink));
+  }
+
+  /* 好感进度条 */
+  .neb-bar-wrap { flex: 1; }
+  .neb-bar {
+    height: 7px; border-radius: 6px;
+    background: rgba(167,139,250,0.15); overflow: hidden; margin-top: 3px;
+  }
+  .neb-bar > i {
+    display: block; height: 100%; border-radius: 6px;
+    background: linear-gradient(90deg, var(--neb-violet), var(--neb-cyan));
+    transition: width .5s ease;
+  }
+
+  /* 状态灯 */
+  .neb-status-dot {
+    width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 4px;
+    box-shadow: 0 0 6px currentColor;
+  }
+  .s-normal  { color: #34d399; background: #34d399; }
+  .s-battle  { color: #fb7185; background: #fb7185; }
+  .s-rest    { color: #fbbf24; background: #fbbf24; }
+  .s-other   { color: #a78bfa; background: #a78bfa; }
+
+  /* 位置标签 */
+  .neb-location {
+    font-size: 11px; color: var(--neb-text-soft);
+    background: rgba(103,232,249,0.12); border: 1px solid rgba(103,232,249,0.25);
+    border-radius: 8px; padding: 2px 8px; display: inline-block; margin-top: 2px;
+  }
+
+  /* 空状态 */
+  .neb-empty { color: var(--neb-text-soft); font-size: 13px; padding: 20px; text-align: center; }
+
+  /* 响应式 */
+  @media (max-width: 540px) {
+    .neb-grid { grid-template-columns: 1fr; }
+  }

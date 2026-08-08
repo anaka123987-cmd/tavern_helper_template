@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+<body>
+<div id="nebula-hud">
+  <div class="neb-topbar">
+    <div class="neb-title"><span class="dot"></span>多维矩阵 · 终端</div>
+    <div style="display:flex; gap:6px; align-items:center;">
+      <button class="neb-fullscreen-btn" id="neb-fullscreen-toggle">⛶</button>
+      <button class="neb-collapse-btn" id="neb-collapse">▲</button>
+    </div>
+  </div>
+
+  <div class="neb-tabs" id="neb-tabs">
+    <div class="neb-tab active" data-page="home">主页</div>
+    <div class="neb-tab" data-page="profile">个人档案</div>
+    <div class="neb-tab" data-page="quest">任务</div>
+    <div class="neb-tab" data-page="world">任务世界</div>
+    <div class="neb-tab" data-page="log">日志情报</div>
+    <div class="neb-tab" data-page="faction">阵营关系</div>
+    <div class="neb-tab" data-page="bag">背包</div>
+    <div class="neb-tab" data-page="shop">商城</div>
+  </div>
+
+  <div class="neb-body">
+    <div class="neb-page active" id="page-home"><div class="neb-empty">正在连接矩阵数据…</div></div>
+    <div class="neb-page" id="page-profile"></div>
+    <div class="neb-page" id="page-quest"></div>
+    <div class="neb-page" id="page-world"></div>
+    <div class="neb-page" id="page-log"></div>
+    <div class="neb-page" id="page-faction"></div>
+    <div class="neb-page" id="page-bag"></div>
+    <div class="neb-page" id="page-shop"></div>
+  </div>
+</div>
+
+</body>
+</html>
